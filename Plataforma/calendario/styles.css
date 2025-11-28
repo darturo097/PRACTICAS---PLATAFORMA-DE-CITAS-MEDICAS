@@ -1,0 +1,76 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.fila {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: bold;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.card {
+    margin-top: 20px;
+    border-radius: 0%;
+}
+
+#month-picker .btn {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+#calendar-body td {
+    height: 100px;
+    vertical-align: top;
+    padding: 5px;
+}
+
+.today {
+    background-color: #fff3cd;
+}
+
+.current-month {
+    background-color: #ffffff;
+}
+
+.other-month {
+    background-color: #f8f9fa;
+    color: #6c757d;
+}
+
+.icono-menu {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.icono-menu:hover {
+    color: #495057;
+}
+
+.month-btn{
+    background-color: #e4e4e4;
+    color: rgb(0, 0, 0);
+    border-color: transparent;
+    border-radius: 0%;
+    width: 30px;
+    height: 30px;
+}
+
+.active-month{
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border-color: #e4e4e4;
+    border-radius: 0%;
+}

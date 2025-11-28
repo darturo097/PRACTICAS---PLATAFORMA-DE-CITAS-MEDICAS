@@ -1,0 +1,174 @@
+/* Colores de la imagen */
+:root {
+    --primary-blue: #3296c8; /* Color azul de la cabecera y el botón 'Agendar' */
+    --sidebar-dark: #364048; /* Color de fondo de la barra lateral oscura */
+    --active-link: #f1f1f1; /* Color de fondo del link activo */
+    --day-highlight: #fff7e4; /* Color de fondo del día 'Wed 1' */
+}
+
+/* 1. Estilos de la Cabecera Superior */
+.header-custom {
+    background-color: var(--primary-blue);
+    height: 50px;
+}
+
+.header-custom .navbar-brand {
+    font-weight: bold;
+    /* Ajusta el padding para la altura */
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* 2. Estilos de la Barra Lateral */
+.sidebar-custom {
+    width: 200px; /* Ancho fijo como en la imagen */
+    min-height: calc(100vh - 50px); /* Ocupa el resto de la altura de la pantalla */
+    background-color: var(--sidebar-dark);
+    position: sticky; /* Para que sea fijo al hacer scroll */
+    top: 50px; /* Debajo de la cabecera */
+}
+
+/* Estilos de los enlaces de la barra lateral */
+.menu-link {
+    color: #a7b7c5; /* Color del texto inactivo */
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    border-radius: 0;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.menu-link:hover {
+    color: #fff;
+    background-color: #49545e; /* Un poco más claro al pasar el ratón */
+}
+
+.menu-link.active {
+    background-color: #3b454e; /* Fondo del enlace activo */
+    color: #fff;
+    border-left: 3px solid var(--primary-blue); /* Borde azul a la izquierda del activo */
+}
+
+/* Estilo para el dropdown de laboratorio */
+.menu-link.dropdown-toggle::after {
+    color: #a7b7c5; /* Color del caret del dropdown */
+}
+
+/* 3. Estilos del Contenido Principal */
+.content-custom {
+    background-color: #f1f5f9; /* Fondo gris claro del área de contenido */
+    min-height: calc(100vh - 50px);
+}
+
+/* 4. Estilos de la Sección de Meses (Selector Izquierdo) */
+.month-selector {
+    padding: 15px !important;
+    background-color: #f7f7f7 !important;
+    border: 1px solid #ddd;
+}
+
+.month-btn {
+    background-color: #fff !important;
+    color: #333 !important;
+    border: 1px solid #ddd !important;
+    font-size: 0.8rem !important;
+    padding: 5px 0 !important;
+}
+
+.month-btn:hover {
+    background-color: #eee !important;
+}
+
+.month-btn.active-month,
+.month-btn.active-month:hover {
+    background-color: #3283c8 !important; /* El color azul de la imagen */
+    color: #fff !important;
+    border-color: #3283c8 !important;
+    font-weight: bold;
+}
+
+#btnAgendar {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+/* 5. Estilos de la Rejilla del Calendario */
+
+.btn-nav-cal {
+    color: #6c757d !important;
+    border-color: #adb5bd !important;
+}
+
+.calendar-body {
+    border-left: 1px solid #dee2e6;
+    border-top: 1px solid #dee2e6;
+}
+
+.calendar-row {
+    min-height: 100px; /* Altura mínima de las celdas del calendario */
+}
+
+.calendar-day {
+    padding: 5px;
+    border-right: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+    position: relative;
+    font-size: 0.9rem;
+}
+
+.days-header .col {
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+.calendar-day.other-month-day {
+    color: #adb5bd; /* Días del mes anterior/siguiente */
+    background-color: #f8f9fa;
+}
+
+.calendar-day.today-day {
+    background-color: var(--day-highlight); /* Color de fondo para el día resaltado (Wed 1) */
+}
+
+/* Ajuste para el número de día en la esquina */
+.calendar-day::before {
+    content: attr(data-day-number);
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-weight: bold;
+}
+/* Ocultar los números de día simulados en HTML, ya que están dentro del div */
+.calendar-day {
+    text-align: right;
+    vertical-align: top;
+}
+
+/* Asegurar que el input de búsqueda en el sidebar sea más pequeño */
+.sidebar-custom .form-control-sm {
+    height: 30px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+}
+
+/* Estilo para la imagen de usuario simulada */
+.user-info img {
+    border: 2px solid #fff; /* Simular el borde blanco de la imagen del usuario */
+}
+
+/* Media Query para responsivo (ajuste menor para pantallas muy pequeñas) */
+@media (max-width: 768px) {
+    .sidebar-custom {
+        width: 100%;
+        min-height: auto;
+        position: relative;
+        top: 0;
+    }
+    .d-flex {
+        flex-direction: column;
+    }
+}

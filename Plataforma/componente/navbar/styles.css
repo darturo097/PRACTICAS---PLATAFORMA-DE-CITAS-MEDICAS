@@ -1,0 +1,6 @@
+.navbar {
+    background-color: #3296c8 !important; /* Usando el azul primario de tu diseño */
+    position: sticky;
+    top: 0;
+    z-index: 1030; /* Asegura que esté sobre otros elementos */
+}

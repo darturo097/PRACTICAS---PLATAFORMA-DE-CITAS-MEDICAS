@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="app" ng-controller="PacienteController">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Hoja Boreal - Pacientes</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Popper y Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+        crossorigin="anonymous"></script>
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="controller.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+    <script src="../componente/navbar/script.js"></script>
+    <script src="../componente/sidebar/script.js"></script>
+</head>
+
+<body >
+    <div id="navbar"></div>
+
+
+    <div class="fila">
+
+        <div id="sidebar"></div>
+
+        <div class="main">
+            <nav aria-label="breadcrumb" class="navRaiz">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" style="color: black;">Panel de control</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Pacientes</li>
+                </ol>
+            </nav>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="row g-2 d-flex align-items-center">
+                            <!-- Filtros -->
+                            <div class="col-sm-6 col-md-4 col-lg-3">
+                                <input type="text" class="form-control inputBuscar" placeholder="Buscar usuarios...">
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-3">
+                                <select class="form-select">
+                                    <option selected>Filtrar por rol...</option>
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Usuario</option>
+                                </select>
+                            </div>
+                            <!-- Acciones -->
+                            <div class="col-12 col-md-4 col-lg-6 d-flex justify-content-md-end mt-2 mt-md-0">
+                                <select class="form-select selectAction" aria-label="Acciones en lote">
+                                    <option selected>Acción en lote</option>
+                                    <option value="eliminar">Eliminar seleccionados</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="row">
+                        <table class="table text-start mt-3 p-3">
+                            <thead class="border-bottom border-top table-light">
+                                <tr>
+                                    <th scope="col" class="text-center">Seleccionar</th>
+                                    <th scope="col" class="text-center">No.</th>
+                                    <th scope="col" class="text-start">Acción</th>
+                                    <th scope="col" class="text-center">Avatar</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Iniciales</th>
+                                    <th scope="col">Registrado</th>
+                                    <th scope="col">Fecha de nacimiento</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-start align-middle">
+                                    <td class="text-center">
+                                        <input type="checkbox" class="form-check-input">
+                                    </td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">
+                                        <select class="form-select form-select-sm selectTable" aria-label="Acciones">
+                                            <option value="" selected>Más</option>
+                                            <option value="editar">Editar</option>
+                                            <option value="eliminar">Eliminar</option>
+                                        </select>
+                                    </td>
+                                    <td class="text-center">
+                                        <img src="perfil.png" alt="Avatar" class="fotoPerfil">
+                                    </td>
+                                    <td>Claudia Bailon</td>
+                                    <td>CB</td>
+                                    <td>2017-12-26 19:29:55</td>
+                                    <td>2016-01-01</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <div class="modal fade" id="modalPaciente" tabindex="-1" aria-labelledby="modalPacienteLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+
+                                <!-- Header -->
+                                <div class="modal-header bg-primary text-white">
+                                    <h5 class="modal-title" id="modalPacienteLabel">Información del Paciente</h5>
+                                    <button type="button" class="btn-close btn-close-white"
+                                        data-bs-dismiss="modal"></button>
+                                </div>
+
+                                <!-- Body -->
+                                <div class="modal-body">
+
+                                    <!-- Info básica -->
+                                    <div class="mb-3">
+                                        <strong>Nombre:</strong> {{paciente.nombre}} <br>
+                                        <strong>CURP:</strong> {{paciente.curp}} <br>
+                                        <strong>Edad:</strong> {{paciente.edad}} años
+                                    </div>
+
+                                    <!-- Tabs -->
+                                    <ul class="nav nav-tabs" id="tabPaciente" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="notas-tab" data-bs-toggle="tab"
+                                                data-bs-target="#notas" type="button">Notas por consulta</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="historial-tab" data-bs-toggle="tab"
+                                                data-bs-target="#historial" type="button">Historial médico</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="vista-tab" data-bs-toggle="tab"
+                                                data-bs-target="#vista" type="button">Vista de documentos
+                                                adjuntos</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="registro-tab" data-bs-toggle="tab"
+                                                data-bs-target="#registro" type="button">Registro de documentos
+                                                adjuntos</button>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Contenido de las pestañas -->
+                                    <div class="tab-content mt-3">
+
+                                        <!-- Notas por consulta -->
+                                        <div class="tab-pane fade show active" id="notas">
+                                            <textarea class="form-control" rows="5" ng-model="paciente.notas"
+                                                placeholder="Escribe las notas de la consulta..."></textarea>
+                                            <div class="text-end mt-2">
+                                                <button class="btn btn-success btn-sm" ng-click="guardarNotas()">Guardar
+                                                    Notas</button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Historial médico -->
+                                        <div class="tab-pane fade" id="historial">
+                                            <ul class="list-group">
+                                                <li class="list-group-item" ng-repeat="evento in paciente.historial">
+                                                    {{evento.fecha}} — {{evento.descripcion}}
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Vista de documentos adjuntos -->
+                                        <div class="tab-pane fade" id="vista">
+                                            <div class="row g-2">
+                                                <div class="col-md-4" ng-repeat="doc in paciente.documentos">
+                                                    <div class="card shadow-sm">
+                                                        <div class="card-body text-center">
+                                                            <p class="card-text">{{doc.nombre}}</p>
+                                                            <button class="btn btn-outline-primary btn-sm"
+                                                                ng-click="verDocumento(doc.url)">Ver</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Registro de documentos adjuntos -->
+                                        <div class="tab-pane fade" id="registro">
+                                            <input type="file" class="form-control mb-2" ng-model="nuevoDocumento"
+                                                file-model="nuevoDocumento">
+                                            <input type="text" class="form-control mb-2"
+                                                placeholder="Nombre del documento" ng-model="nombreDocumento">
+                                            <div class="text-end">
+                                                <button class="btn btn-success btn-sm"
+                                                    ng-click="registrarDocumento()">Subir
+                                                    Documento</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary" ng-click="abrirModal(paciente)">
+                    Ver Detalles del Paciente
+                </button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

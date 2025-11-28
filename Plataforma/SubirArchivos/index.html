@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Subir Imágenes Base64</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        input[type="file"] {
+            margin: 10px 0;
+        }
+
+        button {
+            margin: 5px;
+            padding: 8px 15px;
+        }
+
+        a {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body ng-controller="FileController">
+
+    <h2>Subir Imagen en Base64</h2>
+
+    <input type="file" id="fileInput" onchange="angular.element(this).scope().convertirBase64(this.files)" />
+
+    <button ng-click="subirArchivo()" ng-disabled="!base64">Subir</button>
+
+    <hr>
+
+    <h3>Archivos Guardados:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Visualizar</th>
+                <th>Descargar</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="a in archivos">
+                <td>{{a.id}}</td>
+                <td>{{a.nombre}}</td>
+                <td>
+                    <a ng-click="abrirArchivo(a)">Visualizar</a>
+                </td>
+                <td>
+                    <a ng-click="descargarArchivo(a)">Descargar</a>
+                </td>
+                <td>
+                    <span ng-if="a.base64.startsWith('data:image/')">Imagen</span>
+                    <span ng-if="a.base64.startsWith('data:application/pdf')">PDF</span>
+                </td>
+                <td>{{a.fecha | date:'medium'}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Preview opcional -->
+    <div ng-if="base64" style="margin:20px 0; padding:15px; border:1px solid #eee; background:#f9f9f9;">
+        <h4>Vista previa ({{tamanio}}):</h4>
+
+        <!-- PDF -->
+        <div ng-if="esPDF">
+            <embed ng-src="{{base64Seguro}}" type="application/pdf" width="100%" height="500px" />
+        </div>
+
+        <!-- Imagen -->
+        <div ng-if="!esPDF">
+            <img ng-src="{{base64Seguro}}" style="max-width:300px; border:1px solid #ccc;" />
+        </div>
+
+        <p><strong>Archivo:</strong> {{nombreArchivo}}</p>
+    </div>
+
+</body>
+
+</html>

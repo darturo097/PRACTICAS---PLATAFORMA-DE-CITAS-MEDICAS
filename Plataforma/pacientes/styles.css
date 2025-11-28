@@ -1,0 +1,66 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.fila {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+        width: 100%;
+}
+
+a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: bold;
+}
+
+.card {
+    margin: 0;           /* elimina margen superior e inferior */
+    border-radius: 0;    
+    height: calc(100vh - 56px);       /* 100% de la altura de la ventana */
+    box-sizing: border-box; /* incluye padding y borde en el cálculo */
+}
+
+.icono-menu {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.icono-menu:hover {
+    color: #495057;
+}
+
+.inputBuscar {
+    width: 300px;
+}
+
+thead th {
+    padding: 0px 20px;
+}
+
+.selectAction {
+    width: 100px;
+    background-color: #0474de;
+    color: white;
+    border-radius: 0%;
+}
+
+.selectTable {
+    background-color: #73c04ff0;
+    width: auto;
+    color:#ffffff
+}
+
+.fotoPerfil {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}

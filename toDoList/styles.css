@@ -1,0 +1,17 @@
+.container-1 {
+    margin: 10px auto;
+    width: 50%;
+    border: 2px solid black;
+    padding: 20px;
+    box-shadow: 5px 10px #888888;
+    background-color: lightgrey;;
+}
+
+.btn-clean{
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}

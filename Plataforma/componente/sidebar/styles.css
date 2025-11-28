@@ -1,0 +1,59 @@
+
+
+.sidebar {
+    background-color: #343a40 !important;
+    color: white;
+    top: 56px; /* Altura de la navbar superior */
+    padding: 20px;
+    width: 260px;
+    transition: all 0.3s ease;
+    height: 100%;
+    position: relative;
+    top: auto;
+}
+
+/* Media query para pantallas menores a 720px */
+@media (max-width: 720px) {
+    .sidebar {
+        position: absolute;
+        top: 56px;       /* Debajo del navbar */
+        left: 0;         /* Punto inicial */
+        height: 100vh; /* Alto total de la ventana menos navbar */
+        z-index: 1030;   /* Encima del contenido */
+        transition: all 0.3s ease;
+    }
+
+    /* Clase para mostrar el sidebar */
+    .sidebar.show {
+        transform: translateX(0); /* Se mueve desde la izquierda */
+    }
+}
+
+
+
+.fotoSidebar {
+    margin-left: 8px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.sidebar .nav-link {
+    color: white;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #495057;
+}
+
+.icono-menu {
+    cursor: pointer;
+}
+
+.inputBuscar{
+    margin-left: 8px;
+    padding: 10px;
+    width: 225px;
+    border-radius: 8px;
+    border-style: solid;
+}

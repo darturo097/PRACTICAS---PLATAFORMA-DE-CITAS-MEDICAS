@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Hoja Boreal - Usuarios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="../componente/navbar/script.js"></script>
+    <script src="../componente/sidebar/script.js"></script>
+</head>
+
+<body>
+    <div id="navbar"></div>
+
+    <div class="fila">
+
+        <div id="sidebar"></div>
+
+        <div class="main">
+            <nav aria-label="breadcrumb" class="navRaiz">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" style="color: black;">Panel de control</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
+                </ol>
+            </nav>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="row d-flex align-items-center justify-content-end">
+                            <div class="col-12 col-md-4 col-lg-6 d-flex justify-content-md-end mt-2 mt-md-0">
+                                <select class="form-select selectAction" aria-label="Acciones en lote">
+                                    <option selected>Acción en lote</option>
+                                    <option value="eliminar">Eliminar seleccionados</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        
+                        <div class="row g-2 align-items-center">
+                            <!-- Filtros -->
+                            <div class="col-sm-6 col-md-4 col-lg-3">
+                                <input type="text" class="form-control inputBuscar" placeholder="Buscar usuarios...">
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-3">
+                                <select class="form-select">
+                                    <option selected>Filtrar por rol...</option>
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Usuario</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table class="table text-start mt-3 p-3">
+                                    <thead class="border-bottom border-top table-light">
+                                        <tr>
+                                            <th scope="col" class="text-center">Seleccionar</th>
+                                            <th scope="col" class="text-start">Acción</th>
+                                            <th scope="col" class="text-center">Avatar</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Iniciales</th>
+                                            <th scope="col">Notificaciones</th>
+                                            <th scope="col">Registrado</th>
+                                            <th scope="col">Rol</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="text-start align-middle">
+                                            <td class="text-center">
+                                                <input type="checkbox" class="form-check-input">
+                                            </td>
+                                            <td class="text-center">
+                                                <select class="form-select form-select-sm selectTable"
+                                                    aria-label="Acciones">
+                                                    <option value="" selected>Más</option>
+                                                    <option value="editar">Editar</option>
+                                                    <option value="eliminar">Eliminar</option>
+                                                </select>
+                                            </td>
+                                            <td class="text-center">
+                                                <img src="perfil.png" alt="Avatar" class="fotoPerfil">
+                                            </td>
+                                            <td>Claudia Bailon</td>
+                                            <td>CB</td>
+                                            <td>No</td>
+                                            <td>2017-12-26 19:29:55</td>
+                                            <td>Administrador</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
