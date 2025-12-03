@@ -24,7 +24,7 @@ try {
     $mail->Host = "smtp.gmail.com";
     $mail->SMTPAuth = true;
     $mail->Username = "diego.arteaga.097@gmail.com"; 
-    $mail->Password = "igtc iqjt xyyy vkzk"; // ⚠️ NO tu contraseña normal
+    $mail->Password = 
     $mail->SMTPSecure = "tls";
     $mail->Port = 587;
 
